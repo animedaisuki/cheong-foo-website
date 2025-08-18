@@ -24,13 +24,15 @@ const CompanyCard: React.FC<CompanyCardProps> = ({
   const borderClasses = hasBorder ? "border-brand-secondary" : "";
 
   return (
-    <Image 
-      className={`${width} ${height} rounded-[10px] ${shadowClasses} ${borderClasses} ${className}`}
-      src={imageUrl} 
-      alt={alt}
-      width={190}
-      height={108}
-    />
+    <div className={`${width} ${height} rounded-[10px] ${shadowClasses} ${borderClasses} ${className} overflow-hidden`}>
+      <Image 
+        className="w-full h-full object-contain"
+        src={imageUrl} 
+        alt={alt}
+        width={190}
+        height={108}
+      />
+    </div>
   );
 };
 

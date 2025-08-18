@@ -9,9 +9,9 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children, className = '' }) => {
   return (
-    <div className={`w-full mx-auto inline-flex flex-col justify-start items-start ${className}`}>
+    <div className={`min-h-screen w-full flex flex-col ${className}`}>
       <Header />
-      <main className="self-stretch">
+      <main className="flex-1 w-full">
         {children}
       </main>
       <Footer />

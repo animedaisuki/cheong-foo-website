@@ -1,11 +1,19 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 interface HeaderProps {
   className?: string;
 }
 
 const Header: React.FC<HeaderProps> = ({ className = '' }) => {
+  const router = useRouter();
+  
+  const isActivePage = (path: string) => {
+    return router.pathname === path;
+  };
+
   return (
     <header className={`w-full px-4 md:px-8 lg:px-20 py-3 md:py-5 relative bg-white border-b border-brand-secondary/50 ${className}`}>
       <div className="flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
@@ -44,21 +52,39 @@ const Header: React.FC<HeaderProps> = ({ className = '' }) => {
 
         {/* Navigation Menu */}
         <nav className="flex justify-center items-center gap-4 md:gap-6 order-2 md:order-3 w-full md:w-auto md:absolute md:left-1/2 md:transform md:-translate-x-1/2 md:top-[50%] md:-translate-y-1/2">
-          <div className="px-2 py-1 md:p-2 border-b-2 md:border-b-4 border-brand-primary flex justify-center items-center cursor-pointer hover:bg-brand-primary/10 transition-colors duration-200">
-            <div className="text-brand-primary text-xs md:text-sm font-semibold font-metropolis uppercase">
-              Home
+          <Link href="/">
+            <div className={`px-2 py-1 md:p-2 flex justify-center items-center cursor-pointer hover:bg-brand-primary/10 transition-all duration-200 ${
+              isActivePage('/') 
+                ? 'border-b-2 md:border-b-4 border-brand-primary' 
+                : 'hover:border-b-2 md:hover:border-b-4 hover:border-brand-primary/50'
+            }`}>
+              <div className="text-brand-primary text-xs md:text-sm font-semibold font-metropolis uppercase">
+                Home
+              </div>
             </div>
-          </div>
-          <div className="px-2 py-1 md:p-2 flex justify-center items-center cursor-pointer hover:bg-brand-primary/10 hover:border-b-2 md:hover:border-b-4 hover:border-brand-primary/50 transition-all duration-200">
-            <div className="text-brand-primary text-xs md:text-sm font-semibold font-metropolis uppercase">
-              products
+          </Link>
+          <Link href="/products">
+            <div className={`px-2 py-1 md:p-2 flex justify-center items-center cursor-pointer hover:bg-brand-primary/10 transition-all duration-200 ${
+              isActivePage('/products') 
+                ? 'border-b-2 md:border-b-4 border-brand-primary' 
+                : 'hover:border-b-2 md:hover:border-b-4 hover:border-brand-primary/50'
+            }`}>
+              <div className="text-brand-primary text-xs md:text-sm font-semibold font-metropolis uppercase">
+                products
+              </div>
             </div>
-          </div>
-          <div className="px-2 py-1 md:p-2 flex justify-center items-center cursor-pointer hover:bg-brand-primary/10 hover:border-b-2 md:hover:border-b-4 hover:border-brand-primary/50 transition-all duration-200">
-            <div className="text-brand-primary text-xs md:text-sm font-semibold font-metropolis uppercase">
-              about us
+          </Link>
+          <Link href="/about">
+            <div className={`px-2 py-1 md:p-2 flex justify-center items-center cursor-pointer hover:bg-brand-primary/10 transition-all duration-200 ${
+              isActivePage('/about') 
+                ? 'border-b-2 md:border-b-4 border-brand-primary' 
+                : 'hover:border-b-2 md:hover:border-b-4 hover:border-brand-primary/50'
+            }`}>
+              <div className="text-brand-primary text-xs md:text-sm font-semibold font-metropolis uppercase">
+                about us
+              </div>
             </div>
-          </div>
+          </Link>
         </nav>
       </div>
     </header>

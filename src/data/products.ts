@@ -4,7 +4,6 @@ export interface Product {
   availability: string;
   isInStock: boolean;
   imageUrl?: string;
-  showCircleBg?: boolean;
   buttonText?: string;
 }
 
@@ -15,7 +14,6 @@ export const products: Product[] = [
     availability: 'Lead Time: 2–3 Months',
     isInStock: false,
     imageUrl: '/images/prod-1.png',
-    showCircleBg: false,
     buttonText: 'Learn More'
   },
   {
@@ -24,7 +22,6 @@ export const products: Product[] = [
     availability: 'Lead Time: 2–3 Months',
     isInStock: false,
     imageUrl: '/images/prod-2.png',
-    showCircleBg: false,
     buttonText: 'Learn More'
   },
   {
@@ -33,7 +30,6 @@ export const products: Product[] = [
     availability: 'Availability: In Stock',
     isInStock: true,
     imageUrl: '/images/prod-3.png',
-    showCircleBg: false,
     buttonText: 'Learn More'
   },
   {
@@ -42,7 +38,6 @@ export const products: Product[] = [
     availability: 'Availability: In Stock',
     isInStock: true,
     imageUrl: '/images/prod-4.png',
-    showCircleBg: false,
     buttonText: 'Learn More'
   }
 ];

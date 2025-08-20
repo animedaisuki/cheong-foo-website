@@ -24,46 +24,14 @@ export default function Products() {
         <div className="self-stretch flex flex-col justify-start items-start gap-4">
           <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {products.map((product) => (
-              <div key={product.id} className="h-auto min-h-96 p-3 bg-white rounded-[10px] shadow-[4px_4px_4px_0px_rgba(0,0,0,0.20)] shadow-[-4px_-4px_4px_0px_rgba(0,0,0,0.05)] flex flex-col justify-start items-center gap-2">
-                <div className="w-full aspect-square p-2.5 flex justify-center items-center">
-                  {product.showCircleBg ? (
-                    <div className="w-20 h-20 md:w-24 md:h-24 p-2.5 bg-brand-secondary rounded-full flex justify-center items-center">
-                      <Image 
-                        className="w-12 h-16 md:w-16 md:h-20 rounded-3xl object-cover" 
-                        src={product.imageUrl || '/images/placeholder.png'} 
-                        alt={product.title}
-                        width={64}
-                        height={80}
-                      />
-                    </div>
-                  ) : (
-                    <Image 
-                      className="w-full h-full object-cover rounded-[10px]" 
-                      src={product.imageUrl || '/images/placeholder.png'} 
-                      alt={product.title}
-                      width={270}
-                      height={270}
-                    />
-                  )}
-                </div>
-                <div className="w-full flex-1 flex flex-col justify-between items-start gap-3 p-2">
-                  <div className="w-full text-black text-sm md:text-base font-normal font-metropolis capitalize leading-tight">
-                    {product.title}
-                  </div>
-                  <div className="flex justify-start items-center">
-                    <div className={`text-xs font-bold font-metropolis ${
-                      product.isInStock ? 'text-green-700' : 'text-green-700'
-                    }`}>
-                      {product.availability}
-                    </div>
-                  </div>
-                  <div className="w-full px-2.5 py-2 bg-brand-primary rounded-lg flex justify-center items-center cursor-pointer hover:bg-brand-primary/80 transition-colors duration-200">
-                    <div className="text-white text-sm font-semibold font-metropolis leading-none">
-                      {product.buttonText}
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <ProductCard
+                key={product.id}
+                title={product.title}
+                availability={product.availability}
+                isInStock={product.isInStock}
+                imageUrl={product.imageUrl}
+                buttonText={product.buttonText}
+              />
             ))}
           </div>
         </div>

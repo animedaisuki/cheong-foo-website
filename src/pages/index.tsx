@@ -43,11 +43,11 @@ export default function Home() {
             {products.map((product) => (
               <ProductCard
                 key={product.id}
+                productId={product.id}
                 title={product.title}
                 availability={product.availability}
                 isInStock={product.isInStock}
                 imageUrl={product.imageUrl}
-                showCircleBg={product.showCircleBg}
                 buttonText={product.buttonText}
               />
             ))}

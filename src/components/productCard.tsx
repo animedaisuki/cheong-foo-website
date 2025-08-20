@@ -1,5 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 interface ProductCardProps {
   title: string;
@@ -9,6 +11,8 @@ interface ProductCardProps {
   imageUrl?: string;
   className?: string;
   showCircleBg?: boolean;
+  productId?: string;
+  onClick?: () => void;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({
@@ -18,10 +22,18 @@ const ProductCard: React.FC<ProductCardProps> = ({
   buttonText = "Learn More",
   imageUrl = "https://placehold.co/70x83",
   className = '',
-  showCircleBg = false
+  showCircleBg = false,
+  productId,
+  onClick
 }) => {
-  return (
-    <div className={`h-80 md:h-96 p-3 bg-white rounded-[10px] shadow-[4px_4px_4px_0px_rgba(0,0,0,0.20)] shadow-[-4px_-4px_4px_0px_rgba(0,0,0,0.05)] flex flex-col justify-start items-center gap-2 w-full max-w-sm mx-auto ${className}`}>
+  const router = useRouter();
+  const handleButtonClick = (e: React.MouseEvent) => {
+    router.push(`/products/${productId}`);
+
+  };
+
+  const cardContent = (
+    <div className={`h-80 md:h-96 p-3 bg-white rounded-[10px] shadow-[4px_4px_4px_0px_rgba(0,0,0,0.20)] shadow-[-4px_-4px_4px_0px_rgba(0,0,0,0.05)] flex flex-col justify-start items-center gap-2 w-full max-w-sm mx-auto hover:shadow-lg transition-all duration-200 ${className}`}>
       {/* Image Section */}
       <div className="w-full h-40 md:h-48 p-2.5 flex justify-center items-center">
         <Image className="w-full h-full object-contain" src={imageUrl} alt={title} width={256} height={192} />
@@ -42,7 +54,10 @@ const ProductCard: React.FC<ProductCardProps> = ({
         </div>
 
         {/* Learn More Button */}
-        <div className="w-full px-2.5 py-2 bg-brand-primary rounded-lg flex justify-center items-center cursor-pointer hover:bg-brand-primary/80 hover:shadow-lg transition-all duration-200 transform hover:scale-105">
+        <div 
+          onClick={handleButtonClick}
+          className="w-full px-2.5 py-2 bg-brand-primary rounded-lg flex justify-center items-center cursor-pointer hover:bg-brand-primary/80 hover:shadow-lg transition-all duration-200 transform hover:scale-105"
+        >
           <div className="text-white text-sm font-semibold font-metropolis">
             {buttonText}
           </div>
@@ -50,6 +65,27 @@ const ProductCard: React.FC<ProductCardProps> = ({
       </div>
     </div>
   );
+
+  // // If productId is provided, wrap with Link for navigation
+  // if (productId) {
+  //   return (
+  //     <Link href={`/products/${productId}`} className="block">
+  //       {cardContent}
+  //     </Link>
+  //   );
+  // }
+
+  // // If onClick is provided, make it clickable
+  // if (onClick) {
+  //   return (
+  //     <div onClick={onClick} className="cursor-pointer">
+  //       {cardContent}
+  //     </div>
+  //   );
+  // }
+
+  // Default static card
+  return cardContent;
 };
 
 export default ProductCard;

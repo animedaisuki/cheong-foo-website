@@ -31,6 +31,7 @@ export default function Products() {
                 isInStock={product.isInStock}
                 imageUrl={product.imageUrl}
                 buttonText={product.buttonText}
+                productId={product.id}
               />
             ))}
           </div>

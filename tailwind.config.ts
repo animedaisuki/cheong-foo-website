@@ -20,7 +20,7 @@ const config: Config = {
         },
       },
       fontFamily: {
-        // 'mtr-song': ["FAKE-MTRSong_80's_Special_V4", 'serif'],
+        'mtr-song': ["FAKE-MTRSong_80's_Special_V4", 'serif'],
         'metropolis': ['Metropolis', 'sans-serif'],
         'pingfang': ['PingFang_HK', 'sans-serif'],
         'arial-rounded': ['Arial_Rounded_MT_Bold', 'sans-serif'],

@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { Product } from '../data/products';
 import ProductCard from './productCard';
+import Link from 'next/link';
 
 interface ProductDetailProps {
   product: Product;
@@ -154,7 +155,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product, otherProducts })
                 >
                   <img src="/icons/inquiry.svg" alt="Inquiry" />
                   <div className="text-brand-green text-base font-normal font-metropolis uppercase leading-tight">
-                    Inquiry Now
+                    <Link href="https://wa.me/85256498846">Inquiry Now</Link>
                   </div>
                 </button>
               </div>

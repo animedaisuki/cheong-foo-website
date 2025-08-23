@@ -108,13 +108,17 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product, otherProducts })
         <div className="w-full flex flex-col lg:flex-row justify-between items-start gap-8 lg:gap-16">
           {/* Main Product Image */}
           <div className="w-full lg:w-[500px] h-[300px] md:h-[400px] lg:h-[500px] p-2.5 flex justify-center items-center">
-              <div className="w-120 h-44 flex justify-center items-center">
-                <img
-                  className="w-30 h-30 rounded-3xl object-cover" 
-                  src={product.mainImage || product.imageUrl || 'https://placehold.co/126x149'} 
-                  alt={product.title}
-                />
-              </div>
+            <div className="w-120 h-44 flex justify-center items-center">
+              <img
+                className="w-30 h-30 rounded-3xl object-cover"
+                src={
+                  product.mainImage ||
+                  product.imageUrl ||
+                  "https://placehold.co/126x149"
+                }
+                alt={product.title}
+              />
+            </div>
           </div>
 
           {/* Product Info */}
@@ -125,7 +129,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product, otherProducts })
                 <div className="w-full text-black text-xl md:text-2xl font-medium font-metropolis leading-tight">
                   {product.title}
                 </div>
-                
+
                 {product.specs && (
                   <div className="flex flex-col justify-start items-start gap-3">
                     <div className="text-neutral-600 text-lg md:text-xl font-normal font-metropolis uppercase leading-normal">
@@ -142,53 +146,60 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product, otherProducts })
                         Availability :
                       </div>
                       <div className="text-brand-green text-lg md:text-xl font-bold font-metropolis leading-normal tracking-tight">
-                        {product.isInStock ? 'In Stock' : 'Lead Time: ' + (product.leadTime || '2–3 Months')}
+                        {product.isInStock
+                          ? "In Stock"
+                          : "Lead Time: " + (product.leadTime || "2–3 Months")}
                       </div>
                     </div>
                   </div>
                 )}
-                
+
                 {/* Inquiry Button */}
-                <button 
+                <button
                   onClick={handleInquiryClick}
                   className="w-64 p-2.5 bg-white rounded-lg border border-brand-green flex justify-center items-center gap-2.5 hover:bg-brand-green/10 transition-colors duration-200"
                 >
                   <img src="/icons/inquiry.svg" alt="Inquiry" />
-                  <div className="text-brand-green text-base font-normal font-metropolis uppercase leading-tight">
-                    <Link href="https://wa.me/85256498846">Inquiry Now</Link>
-                  </div>
+                  <Link href="https://wa.me/85256498846">
+                    <div className="text-brand-green text-base font-normal font-metropolis uppercase leading-tight">
+                      Inquiry Now
+                    </div>
+                  </Link>
                 </button>
               </div>
-              
+
               {/* QR Code Placeholder */}
               <img src="/images/badge.png" alt="QR Code" />
             </div>
 
             {/* Additional Images Gallery */}
-            {product.additionalImages && product.additionalImages.length > 0 && (
-              <div className="w-full flex justify-between items-start gap-2 md:gap-4">
-                {product.additionalImages.slice(0, 3).map((image, index) => (
-                  <Image 
-                    key={index}
-                    className="w-32 md:w-40 h-28 md:h-36 rounded-lg object-cover" 
-                    src={image} 
-                    alt={`${product.title} ${index + 1}`}
-                    width={160}
-                    height={144}
-                  />
-                ))}
-                {product.additionalImages.length > 3 && (
-                  <div className="w-32 md:w-40 h-28 md:h-36 relative rounded-lg shadow-[0px_0px_10px_0px_rgba(0,0,0,0.25)] border border-brand-secondary overflow-hidden">
-                    <div className="w-full h-full bg-black/70 blur-[0.50px]"></div>
-                    <div className="absolute inset-0 flex flex-col justify-center items-center text-center">
-                      <div className="text-white text-lg md:text-xl font-normal uppercase text-shadow">
-                        More<br/>{product.additionalImages.length - 3} Images
+            {product.additionalImages &&
+              product.additionalImages.length > 0 && (
+                <div className="w-full flex justify-between items-start gap-2 md:gap-4">
+                  {product.additionalImages.slice(0, 3).map((image, index) => (
+                    <Image
+                      key={index}
+                      className="w-32 md:w-40 h-28 md:h-36 rounded-lg object-cover"
+                      src={image}
+                      alt={`${product.title} ${index + 1}`}
+                      width={160}
+                      height={144}
+                    />
+                  ))}
+                  {product.additionalImages.length > 3 && (
+                    <div className="w-32 md:w-40 h-28 md:h-36 relative rounded-lg shadow-[0px_0px_10px_0px_rgba(0,0,0,0.25)] border border-brand-secondary overflow-hidden">
+                      <div className="w-full h-full bg-black/70 blur-[0.50px]"></div>
+                      <div className="absolute inset-0 flex flex-col justify-center items-center text-center">
+                        <div className="text-white text-lg md:text-xl font-normal uppercase text-shadow">
+                          More
+                          <br />
+                          {product.additionalImages.length - 3} Images
+                        </div>
                       </div>
                     </div>
-                  </div>
-                )}
-              </div>
-            )}
+                  )}
+                </div>
+              )}
           </div>
         </div>
 
@@ -205,7 +216,10 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product, otherProducts })
 
             {/* Features List */}
             {product.features.map((feature, index) => (
-              <div key={index} className="w-full flex flex-col justify-start items-start gap-2">
+              <div
+                key={index}
+                className="w-full flex flex-col justify-start items-start gap-2"
+              >
                 <div className="text-brand-primary text-xl md:text-2xl font-medium font-metropolis uppercase leading-normal">
                   {feature.title}
                 </div>
